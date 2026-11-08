@@ -1,0 +1,14 @@
+html,body{margin:0;padding:0;background:#fff}
+.body{font-family:'open_sans','Open Sans','PingFang SC',"Microsoft YaHei",sans-serif}
+.body h1,.body h2{color:#636972;font-family:'open_sans','Open Sans',sans-serif}
+.body p,.body li,.body span{color:#636972}
+a{color:#636972 !important;text-decoration:underline}
+.general a{text-decoration:none}
+h1{font-size:2em;margin:.67em 0;font-weight:bold}
+h2{font-size:1.5em;margin:.83em 0;font-weight:bold}
+p{margin:1em 0;line-height:1.6}
+ul{margin:1em 0;padding-left:40px;list-style:disc}
+li{line-height:1.6}
+.back-home{display:block;max-width:640px;margin:24px auto 0;padding:0 40px;font-size:14px;color:#8a9099;text-decoration:none}
+.back-home:hover{color:#d47125}
+@media (max-width:520px){.body{padding:24px !important;font-size:15px !important}.back-home{padding:0 24px}}

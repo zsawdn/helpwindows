@@ -1,0 +1,30 @@
+
+/* ===== helpwindows 纯静态站补充样式（替代原平台运行时） ===== */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+img{max-width:100%}
+
+/* 桌面导航下拉面板 */
+#nav-popover-panel.nav-dropdown-popover{position:absolute;z-index:9000;display:none}
+#nav-popover-panel.nav-dropdown-popover.is-open{display:block !important}
+#nav-popover-panel.nav-dropdown-popover .inner-content{box-shadow:0 8px 24px rgba(0,0,0,.14);border-radius:6px;background:#fff}
+
+/* 抽屉遮罩 */
+#navbar-drawer-mask{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.45);z-index:9998;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
+body.drawer-open #navbar-drawer-mask{opacity:1;visibility:visible}
+body.drawer-open{overflow:hidden}
+
+/* 移动端抽屉 */
+.navbar-drawer{position:fixed;top:0;left:0;bottom:0;width:280px;max-width:84vw;background:#fff;z-index:9999;overflow-y:auto;transform:translateX(-104%);transition:transform .25s ease;box-shadow:2px 0 16px rgba(0,0,0,.12);padding:12px 0;margin:0}
+body.drawer-open .navbar-drawer{transform:translateX(0)}
+.navbar-drawer ul{list-style:none;margin:0;padding:0}
+.navbar-drawer>ul>li{border-bottom:1px solid #f0f0f0}
+.navbar-drawer .navbar-drawer-item{display:block;padding:14px 20px;font-size:16px;color:#2e2e2f;text-decoration:none}
+.navbar-drawer .navbar-drawer-item:hover{background:#f6f6f6;color:#d47125}
+.navbar-drawer .navbar-drawer-dropdown>ul{display:none;background:#fafafa}
+.navbar-drawer .navbar-drawer-dropdown.is-open>ul{display:block}
+.navbar-drawer .navbar-drawer-dropdown>ul a{padding-left:36px}
+.navbar-drawer .s-mobile-nav-dropdown-item{cursor:pointer}
+
+@media (min-width:768px){.navbar-drawer,#navbar-drawer-mask,.navbar-drawer-bar{display:none !important}}
+@media (max-width:767px){.s-navbar-desktop{display:none !important}}
