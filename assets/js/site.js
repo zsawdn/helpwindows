@@ -64,18 +64,38 @@
   });
   window.addEventListener('resize', function () { closeAll(null); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeAll(null); document.body.classList.remove('drawer-open'); }
+    if (e.key === 'Escape') { closeAll(null); document.body.classList.remove('drawer-open'); syncDrawer(); }
   });
 
   /* ---------- 移动端抽屉 ---------- */
+  /* Mobile drawer: keep bundle CSS 'translate' state in sync when toggling body.drawer-open */
+  function syncDrawer() {
+    var open = document.body.classList.contains('drawer-open');
+    Array.prototype.forEach.call(document.querySelectorAll('.navbar-drawer'), function (d) {
+      if (open) {
+        d.classList.add('translate');
+        d.style.setProperty('height', 'auto', 'important');
+        d.style.setProperty('transform', 'translateZ(0)', 'important');
+      } else {
+        d.classList.remove('translate');
+        d.style.removeProperty('height');
+        d.style.removeProperty('transform');
+      }
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.navbar-drawer-bar'), function (b) {
+      if (open) b.classList.add('drawer-open'); else b.classList.remove('drawer-open');
+    });
+  }
+
   Array.prototype.forEach.call(document.querySelectorAll('.navbar-drawer-bar'), function (bar) {
     bar.addEventListener('click', function (e) {
       e.preventDefault();
       document.body.classList.toggle('drawer-open');
+      syncDrawer();
     });
   });
   var mask = document.getElementById('navbar-drawer-mask');
-  if (mask) mask.addEventListener('click', function () { document.body.classList.remove('drawer-open'); });
+  if (mask) mask.addEventListener('click', function () { document.body.classList.remove('drawer-open'); syncDrawer(); });
   Array.prototype.forEach.call(document.querySelectorAll('.navbar-drawer-dropdown'), function (dd) {
     var head = dd.querySelector('.s-mobile-nav-dropdown-item');
     if (!head) return;
@@ -109,4 +129,5 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
+  syncDrawer();
 })();
